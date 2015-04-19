@@ -1,0 +1,54 @@
+---
+# This is the overall site playbook.  It will ensure you're all set to go, performing all baseline
+# configuration for the machines in the hosts file for ansible
+
+# We're going to use LXC to do all of this, but just for the tests.  You can really get away with
+# using VirtualBox or physicals if you like.  Make sure you change the remote user to whatever
+# you're using as a user created at install time.  LXC's default template creates an "ubuntu" user
+# on all ubuntu machines.
+#
+# Our site will consist of two web servers, one DB server, one workstation, and localhost as the
+# control station (With LXC's and ansible config).
+#
+# To ensure DNS resolution is working for your LXC containers, follow this doc: https://blog.carroarmato0.be/2013/11/24/dns-in-ubuntu-lxc/
+# or, change the hosts file in this playbook to use IP's.  You're choice.
+
+- name: Baseline Configuration 
+  hosts: all
+  remote_user: ubuntu 
+  sudo: yes
+
+  roles:
+    - common
+
+- name: Deploy LAMP servers
+  hosts: webservers
+  remote_user: ubuntu
+  sudo: yes
+
+  roles:
+    - webservers
+
+- name: Deploy DB servers
+  hosts: dbservers
+  remote_user: ubuntu
+  sudo: yes
+
+  roles:
+    - dbservers
+
+- name: Deploy workstation configuration
+  hosts: workstations
+  remote_user: ubuntu
+  sudo: yes
+
+  roles:
+     - workstations
+
+- name: Deply Ansible control workstation
+  hosts: control
+  remote_user: ubuntu
+  sudo: yes
+
+  roles:
+    - control

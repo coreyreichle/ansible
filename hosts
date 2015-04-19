@@ -1,0 +1,12 @@
+[webservers]
+web01.lxc
+web02.lxc
+
+[dbservers]
+db01.lxc
+
+[workstations]
+work01.lxc
+
+[control]
+localhost

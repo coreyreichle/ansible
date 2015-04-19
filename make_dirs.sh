@@ -3,7 +3,7 @@
 # Script to create ansible playbook directories
 
 # define your roles here
-roles=(common webservers db desktop)
+roles=(common webservers dbservers workstations control)
 directories=(tasks handlers templates files vars defaults meta)
 
 # create playbook
