@@ -3,7 +3,6 @@ This is a working playbook, that steps the user though building a basic playbook
 At this time, the playbook is incomplete, and may not finish to the end.
 
 #Setup your environment
-##Clone down this repo
 Clone down this repo:
 
 ```
