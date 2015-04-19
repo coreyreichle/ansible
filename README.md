@@ -17,7 +17,7 @@ sudo apt-get install lxc ansible
 Now, create your containers, and link the provided hosts file to /etc/ansible/hosts:
 
 ```
-for i in web01 web02 db01 work01; do sudo lxc-create -n $i -t ubuntu; done; sudo ln -s `pwd`/hosts /etc/ansible/hosts
+for i in web01 web02 db01 work01; do sudo lxc-create -n $i -t ubuntu; done
 ```
 
 Start your containers:
@@ -29,21 +29,21 @@ At this point, you should see the fancy lxc display, complete with IP addresses 
 #Provision your LXC containers
 Let's go ahead and make sure your workstation is functioning correctly:
 ```
-ansible-playbook site-yml --limit control
+ansible-playbook site-yml -i ./hosts --limit control
 ```
 This should execute your playbook against just the control workstation.
 
 Then, let's provision the workstations:
 
 ```
-ansible-playbook site.yml --limit workstations
+ansible-playbook site.yml -i ./hosts  --limit workstations
 ```
 
 The --limit flag limits you to just the provided group which contains the machines in the groups specified in the hosts file.
 
 Now, let's provision the balance of the machines:
 ```
-ansible-playbook site.yml
+ansible-playbook site.yml -i ./hosts 
 ```
 
 At this point, you should be able to go to http://web01.lxc and see the hello world php file, which should show you the DB connection information as well.
