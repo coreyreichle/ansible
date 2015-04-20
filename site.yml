@@ -45,9 +45,8 @@
   roles:
      - workstations
 
-- name: Deply Ansible control workstation
+- name: Deploy Ansible control workstation
   hosts: control
-  remote_user: ubuntu
   sudo: yes
 
   roles:
