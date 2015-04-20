@@ -1,0 +1,7 @@
+# This creates a user on the system.  Since this is the workstation role, your workstation machine should have an ansible user and a workstation user account
+# both the the password of 'ansible' without the quotes.
+# Note, taking the user OUT of this play wont remove the user.  You have to change group state to "absent", and add the absent state to the user account 
+---
+
+- group: name=workstation state=present
+- user: name=workstation group=ansible password=$6$Xvn/xaBBWXUDHR$GiqY151JfPJf12.hDApJM.HpKJPfYMHXBPH4tVPwYEpVRbOGgShOpdszXTW4sDrTN0CJhbZVOLQ9KUpzReWdc1

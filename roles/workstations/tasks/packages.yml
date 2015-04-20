@@ -1,0 +1,9 @@
+# Install our baseline packages for workstations.  Workstations will get everything from the baseline install
+# plus what is here.
+---
+- name: Install workstation packages
+  apt: name={{ item }} state=present
+  with_items:
+    - firefox 
+    - byobu
+    - ubuntu-desktop 

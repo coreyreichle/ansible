@@ -1,0 +1,6 @@
+# This contains the root cron job workstations, it has only one task there.
+
+---
+
+- cron: name="Backup" minute="0" hour="0" job="/root/backup.sh > /dev/null"
+- copy: src=../files/backup.sh dest=/root/backup.sh owner=root group=root mode=0750 

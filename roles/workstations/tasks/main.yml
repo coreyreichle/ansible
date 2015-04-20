@@ -1,0 +1,6 @@
+---
+# This play sets up our workstation(s)
+
+- include: packages.yml
+- include: users.yml
+- include: crontasks.yml

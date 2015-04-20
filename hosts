@@ -9,4 +9,4 @@ db01.lxc
 work01.lxc
 
 [control]
-localhost
+localhost	ansible_connection=local
