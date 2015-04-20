@@ -57,3 +57,26 @@ ansible-playbook site.yml -i ./hosts  -k -K
 ```
 
 At this point, you should be able to go to http://web01.lxc and see the hello world php file, which should show you the DB connection information as well.
+
+#Explaining the Playbook
+The best way to break down your play are by role, and this is what I've done here, segregating various roles for a simple web stack, plus a control workstation and a plain-jane workstation.
+
+##Common role
+The "common" role is what applies to every machine you own (It captures all hosts, per the site.yml file).  It consists only of tasks at this point.
+
+The file roles/common/tasks/main.yml merely includes several other tasks to be done:  packages.yml, sudoers.yml and users.yml.
+
+The first call is packages.yml, which just installs some packages we want on every machine.  In that play, you see how you can work with a list of items to perform the same action with.
+
+Then, we call users.yml.  Here, we first create a group for the ansible called "ansible", then we create a user called "ansible".  You'll notice a glob of what looks to be random characters.  This is the md5 hash for this user's password (ansible).
+
+Then, sudoers.yml gets referenced.  This file demonstrates the copy module, where we we copy a file up to the machine, and set it's permissions.  It also demonstrates creating a group, and adding the ansible user to this group.
+
+##Control Role
+Not started yet
+
+##DB Role
+Not started yet
+
+##Web Role
+Not Started Yet
