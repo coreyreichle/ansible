@@ -1,0 +1,6 @@
+---
+# This playbook contains all of the common things every machine in the site gets.  Basic packages, users, etc etc.
+
+- include: packages.yml
+- include: users.yml
+- include: sudoers.yml

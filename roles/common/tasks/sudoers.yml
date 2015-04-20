@@ -1,0 +1,8 @@
+# This will create our admin group, and ensure the appropriate users are added to the group
+---
+- group: name=admins state=present
+
+- name: Ensure localsudo in place 
+  copy: src=../files/localsudo dest=/etc/sudoers.d/localsudo mode=0440
+
+- user: name=ansible groups=admins append=yes

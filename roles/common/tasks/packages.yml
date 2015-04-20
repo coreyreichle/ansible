@@ -1,0 +1,8 @@
+# Install our baseline packages for all machines, irrespective of what role they might have
+---
+- name: Install baseline packages
+  apt: name={{ item }} state=present
+  with_items:
+    - vim
+    - aptitude
+    - git
