@@ -37,23 +37,23 @@ ansible -i ./hosts all -m ping -u ubuntu -k
 ```
 
 #Provision your LXC containers
-Let's go ahead and make sure your workstation is functioning correctly:
+Let's go ahead and get all of your baseline config completed:
 ```
-ansible-playbook site-yml -i ./hosts --limit control
+ansible-playbook site.yml -i ./hosts --limit control -k -K
 ```
 This should execute your playbook against just the control workstation.
 
 Then, let's provision the workstations:
 
 ```
-ansible-playbook site.yml -i ./hosts  --limit workstations
+ansible-playbook site.yml -i ./hosts  --limit workstations -k -K
 ```
 
 The --limit flag limits you to just the provided group which contains the machines in the groups specified in the hosts file.
 
 Now, let's provision the balance of the machines:
 ```
-ansible-playbook site.yml -i ./hosts 
+ansible-playbook site.yml -i ./hosts  -k -K
 ```
 
 At this point, you should be able to go to http://web01.lxc and see the hello world php file, which should show you the DB connection information as well.
