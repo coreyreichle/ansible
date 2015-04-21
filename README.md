@@ -72,8 +72,13 @@ Then, we call users.yml.  Here, we first create a group for the ansible called "
 
 Then, sudoers.yml gets referenced.  This file demonstrates the copy module, where we we copy a file up to the machine, and set it's permissions.  It also demonstrates creating a group, and adding the ansible user to this group.
 
+##Workstation Role
+This role is pretty simple, and a whole lot alike to the Common role:  Create another user, add some more packages.  This one demonstrates how to deploy cron jobs though as well.  If you note, the combined list of packages includes what is installed from common, as well as packages added here.  However, the rest of the machines will not get the packages specified here.
+
+If you were to use this playbook, you can specify a baseline of packages and basic configurations you want to be given to all of your workstations.  IDE's, and whatnot are good to add here, and you can further break out roles to include workstations, and developer workstations as an example.
+
 ##Control Role
-Not started yet
+If you're running this playbook, everything here should already be set up.  However, you can also use this to deploy central control workstations.
 
 ##DB Role
 Not started yet
