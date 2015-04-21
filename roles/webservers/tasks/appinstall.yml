@@ -1,0 +1,5 @@
+---
+#This installs our "webapp"
+
+- name: Install the web application
+  template: src=index.j2 dest=/var/www/html/index.html owner=www-data group=www-data mode=0755

@@ -1,0 +1,8 @@
+# Install our baseline packages for control machines
+
+---
+- name: Install control machine packages
+  apt: name={{ item }} state=present
+  with_items:
+    - lxc
+    - ansible 

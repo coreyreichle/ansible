@@ -1,0 +1,6 @@
+---
+# This play sets up our control workstation.  It demonstrates the use of variables in the playbooks
+# as well, in the git.yml play.  Variable definitions are located in the vars directory in this role
+
+- include: packages.yml
+- include: git.yml

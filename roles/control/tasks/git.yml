@@ -1,0 +1,5 @@
+---
+# Since this is a control station, we'll need a copy of the Ansible repo :) 
+
+- name: Clone in the ansible playbook 
+  git: repo={{ ansible_repo }} dest=/home/ubuntu/ansible accept_hostkey=yes

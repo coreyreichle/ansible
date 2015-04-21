@@ -1,2 +1,5 @@
 ---
 # This play provisions the web server and applications that will be needed
+
+- include: packages.yml
+- include: appinstall.yml

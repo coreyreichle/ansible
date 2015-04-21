@@ -1,0 +1,3 @@
+# These are just the vars needed by the web servers
+---
+ansible_repo: https://github.com/coreyreichle/ansible.git

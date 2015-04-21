@@ -1,0 +1,14 @@
+<html>
+<head>
+<title> {{ ansible_hostname }}</title>
+</head>
+<body>
+This is host: {{ ansible_hostname }} </p>
+
+This app serv will connect to the following DB servers:</p>
+
+{% for host in groups['dbservers'] %}
+    {{ host }} </p>
+{% endfor %}
+</body>
+</html>
