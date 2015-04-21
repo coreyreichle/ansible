@@ -1,0 +1,25 @@
+- name: Install MySQL
+  action: apt name={{ item }}
+  with_items:
+    - mysql-server
+    - python-mysqldb
+
+- name: Start the MySQL service
+  action: service name=mysql state=started
+
+- name: Create mysql DB
+  mysql_db: name=webapp state=present
+
+- name: Create a user for the webapp
+  mysql_user: name=webapp host={{ ansible_hostname }} password=ansible priv=webapp.*:ALL,GRANT
+
+- name: Change the root password for the db servers 
+  mysql_user: name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: copy .my.cnf file with root password credentials
+  template: src=.my.cnf dest=/root/.my.cnf owner=root mode=0600
