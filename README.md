@@ -81,7 +81,9 @@ If you were to use this playbook, you can specify a baseline of packages and bas
 If you're running this playbook, everything here should already be set up.  However, you can also use this to deploy central control workstations.
 
 ##DB Role
-Not started yet
+The DB role installs mysql, creates a database, and a database user called "webapp" with a password of "ansible".
 
 ##Web Role
-Not Started Yet
+This role deploys apache2, php5, and all required packages to connect to a mysql database.  It also deploys a simple webapp, which is really just a index.html file that is templated.  It writes out the host name that you're connected to, and the db servers this webapp would use.
+
+This demonstrates how to use the variables and a looping structure in jinja2 templates.  After this role is deployed, you can hit either http://web01.lxc/index.html or http://web02.lxc/index.html to view the two separate pages.
