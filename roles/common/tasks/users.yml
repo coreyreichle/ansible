@@ -1,5 +1,9 @@
 # This creates a user on the system 
 ---
+- group: name={{ lookup('env', 'LOGNAME') }}
+- user: name={{ lookup('env', 'LOGNAME') }} group={{ lookup('env', 'LOGNAME') }}
+- file: dest=/home/{{ lookup('env', 'LOGNAME') }}/.ssh state=directory
+- copy: src=/home/{{ lookup('env', 'LOGNAME') }}/.ssh/authorized_keys dest=/home/{{ lookup('env', 'LOGNAME') }}/.ssh/authorized_keys owner={{ lookup('env', 'LOGNAME') }} group={{ lookup('env', 'LOGNAME') }} mode=0600
 
 - group: name=ansible state=present
 - user: name=ansible group=ansible password=$6$Xvn/xaBBWXUDHR$GiqY151JfPJf12.hDApJM.HpKJPfYMHXBPH4tVPwYEpVRbOGgShOpdszXTW4sDrTN0CJhbZVOLQ9KUpzReWdc1
