@@ -1,6 +1,4 @@
-This is a working playbook, that steps the user though building a basic playbook for Ansible, using the provided best practices.
-
-At this time, the playbook is incomplete, and may not finish to the end.
+This is a working playbook, that steps the user though building a basic playbook for Ansible, using the provided best practices.  From start to finish, this playbook should take ~1 hour to complete, due to the lxc container creation, and package installation on the containers.
 
 #Setup your environment
 Clone down this repo:
@@ -81,7 +79,7 @@ If you were to use this playbook, you can specify a baseline of packages and bas
 If you're running this playbook, everything here should already be set up.  However, you can also use this to deploy central control workstations.
 
 ##DB Role
-The DB role installs mysql, creates a database, and a database user called "webapp" with a password of "ansible".
+The DB role installs mysql, creates a database, and a database user called "webapp" with a password of "ansible".  This one is another that shows how to use variable files to use in your templates.
 
 ##Web Role
 This role deploys apache2, php5, and all required packages to connect to a mysql database.  It also deploys a simple webapp, which is really just a index.html file that is templated.  It writes out the host name that you're connected to, and the db servers this webapp would use.
