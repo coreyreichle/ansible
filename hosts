@@ -10,3 +10,6 @@ work01.lxc
 
 [control]
 localhost	ansible_connection=local
+
+[haproxy]
+web.lxc

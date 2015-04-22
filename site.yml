@@ -51,3 +51,10 @@
 
   roles:
     - control
+
+- name: Deploy HA Proxy
+  hosts: haproxy
+  remote_user: ubuntu
+  sudo: yes
+  roles:
+    - haproxy

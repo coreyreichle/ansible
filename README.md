@@ -56,7 +56,7 @@ Now, let's provision the balance of the machines:
 ansible-playbook site.yml -i ./hosts  -k -K
 ```
 
-At this point, you should be able to go to http://web01.lxc and see the hello world php file, which should show you the DB connection information as well.
+At this point, you should be able to go to http://web.lxc and see the hello world file, which should show you the DB connection information as well.
 
 #Explaining the Playbook
 The best way to break down your play are by role, and this is what I've done here, segregating various roles for a simple web stack, plus a control workstation and a plain-jane workstation.
@@ -87,3 +87,6 @@ The DB role installs mysql, creates a database, and a database user called "weba
 This role deploys apache2, php5, and all required packages to connect to a mysql database.  It also deploys a simple webapp, which is really just a index.html file that is templated.  It writes out the host name that you're connected to, and the db servers this webapp would use.
 
 This demonstrates how to use the variables and a looping structure in jinja2 templates.  After this role is deployed, you can hit either http://web01.lxc/index.html or http://web02.lxc/index.html to view the two separate pages.
+
+##HAProxy Role
+This is a simple proxy install, that loadbalances between the two webservers.
