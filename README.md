@@ -15,12 +15,12 @@ sudo apt-get install lxc ansible
 Now, create your containers:
 
 ```
-for i in web01 web02 db01 work01; do sudo lxc-create -n $i -t ubuntu; done
+for i in web01 web02 web db01 work01; do sudo lxc-create -n $i -t ubuntu; done
 ```
 
 Start your containers:
 ```
-for i in web01 web02 db01 work01; do sudo lxc-start -n $i; done; sudo lxc-ls --fancy
+for i in web01 web02 web db01 work01; do sudo lxc-start -n $i; done; sudo lxc-ls --fancy
 ```
 At this point, you should see the fancy lxc display, complete with IP addresses for your containers.  If you don't see the IP's, wait a minute, and execute the lxc-ls command again.  Once your machines are connected, proceed to the next step.
 
@@ -55,6 +55,18 @@ ansible-playbook site.yml -i ./hosts  -k -K
 ```
 
 At this point, you should be able to go to http://web.lxc and see the hello world file, which should show you the DB connection information as well.
+
+When finished playing with all of this, destroying the machines is easy-peasy:
+```
+for i in web01 web02 web db01 work01; do sudo lxc-stop -n $i; done; sudo lxc-ls --fancy
+```
+
+Once the containers have shown "STOPPED", execute this:
+```
+for i in web01 web02 web db01 work01; do sudo lxc-destroy -n $i; done; sudo lxc-ls --fancy
+```
+
+And, they will all be gone!
 
 #Explaining the Playbook
 The best way to break down your play are by role, and this is what I've done here, segregating various roles for a simple web stack, plus a control workstation and a plain-jane workstation.
