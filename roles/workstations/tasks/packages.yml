@@ -6,4 +6,4 @@
   with_items:
     - firefox 
     - byobu
-    - ubuntu-desktop 
+      #    - ubuntu-desktop 
