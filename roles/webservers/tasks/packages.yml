@@ -4,9 +4,9 @@
   apt: name={{ item }} state=present
   with_items:
     - apache2
-    - apache2-mpm-prefork
+      #    - apache2-mpm-prefork
     - apache2-utils
-    - apache2.2-common
+      #    - apache2.2-common
     - libapache2-mod-php5
     - libapr1
     - libaprutil1
@@ -14,7 +14,8 @@
     - libdbi-perl
     - libnet-daemon-perl
     - libpq5
-    - mysql-client-5.5
+      #    - mysql-client-5.5
+    - mysql-client
     - php5-common
     - php5-mysql
 

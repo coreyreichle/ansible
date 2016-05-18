@@ -15,7 +15,7 @@ sudo apt-get install lxc ansible
 Now, create your containers:
 
 ```
-for i in web01 web02 web db01 work01; do sudo lxc-create -n $i -t ubuntu; done
+for i in web01 web02 web db01 work01; do sudo lxc-create -n $i -t ubuntu -- -r precise; done
 ```
 
 Start your containers:
